@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Large Expandable Category Showcase</title>
+    <title>Large Expandable Category Showcase with Navigation Arrows</title>
     <style>
         body, html {
             margin: 0;
@@ -13,10 +13,14 @@
             font-family: Arial, sans-serif;
             background-color: #000;
         }
+        .showcase-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
         .category-container {
             display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
             gap: 20px;
             padding: 20px;
             height: 100%;
@@ -26,13 +30,7 @@
             background-position: center;
             background-repeat: no-repeat;
             align-items: center;
-        }
-        .category-container::-webkit-scrollbar {
-            height: 10px;
-        }
-        .category-container::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
+            transition: transform 0.3s ease;
         }
         .category {
             flex: 0 0 300px;
@@ -42,10 +40,9 @@
             position: relative;
             transition: all 0.3s ease;
             cursor: pointer;
-            scroll-snap-align: center;
         }
         .category:hover {
-            flex: 0 0 750px; /* 2.5 times the original width */
+            flex: 0 0 750px;
         }
         .vertical, .horizontal {
             width: 100%;
@@ -63,7 +60,7 @@
         }
         .horizontal {
             opacity: 0;
-            width: 750px; /* Match the hover width */
+            width: 750px;
         }
         .category:hover .vertical { opacity: 0; }
         .category:hover .horizontal { opacity: 1; }
@@ -81,38 +78,82 @@
         .category:nth-child(6) .horizontal { background-color: rgba(255, 216, 33, 0.8); }
         .category:nth-child(7) .vertical { background-color: rgba(123, 104, 238, 0.8); }
         .category:nth-child(7) .horizontal { background-color: rgba(155, 136, 255, 0.8); }
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #000;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="category-container">
-        <div class="category">
-            <div class="vertical">Category 1</div>
-            <div class="horizontal">Category 1 (Expanded)</div>
+    <div class="showcase-wrapper">
+        <div class="category-container">
+            <div class="category">
+                <div class="vertical">Category 1</div>
+                <div class="horizontal">Category 1 (Expanded)</div>
+            </div>
+            <div class="category">
+                <div class="vertical">Category 2</div>
+                <div class="horizontal">Category 2 (Expanded)</div>
+            </div>
+            <div class="category">
+                <div class="vertical">Category 3</div>
+                <div class="horizontal">Category 3 (Expanded)</div>
+            </div>
+            <div class="category">
+                <div class="vertical">Category 4</div>
+                <div class="horizontal">Category 4 (Expanded)</div>
+            </div>
+            <div class="category">
+                <div class="vertical">Category 5</div>
+                <div class="horizontal">Category 5 (Expanded)</div>
+            </div>
+            <div class="category">
+                <div class="vertical">Category 6</div>
+                <div class="horizontal">Category 6 (Expanded)</div>
+            </div>
+            <div class="category">
+                <div class="vertical">Category 7</div>
+                <div class="horizontal">Category 7 (Expanded)</div>
+            </div>
         </div>
-        <div class="category">
-            <div class="vertical">Category 2</div>
-            <div class="horizontal">Category 2 (Expanded)</div>
-        </div>
-        <div class="category">
-            <div class="vertical">Category 3</div>
-            <div class="horizontal">Category 3 (Expanded)</div>
-        </div>
-        <div class="category">
-            <div class="vertical">Category 4</div>
-            <div class="horizontal">Category 4 (Expanded)</div>
-        </div>
-        <div class="category">
-            <div class="vertical">Category 5</div>
-            <div class="horizontal">Category 5 (Expanded)</div>
-        </div>
-        <div class="category">
-            <div class="vertical">Category 6</div>
-            <div class="horizontal">Category 6 (Expanded)</div>
-        </div>
-        <div class="category">
-            <div class="vertical">Category 7</div>
-            <div class="horizontal">Category 7 (Expanded)</div>
-        </div>
+        <div class="nav-arrow nav-left">&#10094;</div>
+        <div class="nav-arrow nav-right">&#10095;</div>
     </div>
+
+    <script>
+        const container = document.querySelector('.category-container');
+        const leftArrow = document.querySelector('.nav-left');
+        const rightArrow = document.querySelector('.nav-right');
+        const categoryWidth = 320; // 300px width + 20px gap
+
+        leftArrow.addEventListener('click', () => {
+            container.scrollBy({ left: -categoryWidth, behavior: 'smooth' });
+        });
+
+        rightArrow.addEventListener('click', () => {
+            container.scrollBy({ left: categoryWidth, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
