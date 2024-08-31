@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Large Expandable Category Showcase with Navigation Arrows</title>
+    <title>Category Showcase with Styled Navigation Arrows</title>
     <style>
         body, html {
             margin: 0;
@@ -30,7 +30,13 @@
             background-position: center;
             background-repeat: no-repeat;
             align-items: center;
-            transition: transform 0.3s ease;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .category-container::-webkit-scrollbar {
+            display: none;
         }
         .category {
             flex: 0 0 300px;
@@ -80,28 +86,36 @@
         .category:nth-child(7) .horizontal { background-color: rgba(155, 136, 255, 0.8); }
         .nav-arrow {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 24px;
-            color: #000;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
         .nav-arrow:hover {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.4);
         }
         .nav-left {
-            left: 20px;
+            right: 70px;
         }
         .nav-right {
             right: 20px;
+        }
+        .arrow {
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+        .nav-left .arrow {
+            border-right: 15px solid white;
+        }
+        .nav-right .arrow {
+            border-left: 15px solid white;
         }
     </style>
 </head>
@@ -137,8 +151,8 @@
                 <div class="horizontal">Category 7 (Expanded)</div>
             </div>
         </div>
-        <div class="nav-arrow nav-left">&#10094;</div>
-        <div class="nav-arrow nav-right">&#10095;</div>
+        <div class="nav-arrow nav-left"><div class="arrow"></div></div>
+        <div class="nav-arrow nav-right"><div class="arrow"></div></div>
     </div>
 
     <script>
@@ -148,11 +162,11 @@
         const categoryWidth = 320; // 300px width + 20px gap
 
         leftArrow.addEventListener('click', () => {
-            container.scrollBy({ left: -categoryWidth, behavior: 'smooth' });
+            container.scrollLeft -= categoryWidth;
         });
 
         rightArrow.addEventListener('click', () => {
-            container.scrollBy({ left: categoryWidth, behavior: 'smooth' });
+            container.scrollLeft += categoryWidth;
         });
     </script>
 </body>
