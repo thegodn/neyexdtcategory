@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Category Showcase with Sideways Expansion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .category-container {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            height: 150px;
+        }
+        .category {
+            width: 100px;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .category img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        .category:hover {
+            width: 250px; /* 2.5 times the original width */
+        }
+        .category:hover .vertical {
+            opacity: 0;
+        }
+        .category:hover .horizontal {
+            opacity: 1;
+        }
+        .vertical {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 1;
+        }
+        .horizontal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            width: 250px; /* Match the hover width */
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="category-container">
+        <div class="category">
+            <img src="/api/placeholder/100/150" alt="Category 1 Vertical" class="vertical">
+            <img src="/api/placeholder/250/150" alt="Category 1 Horizontal" class="horizontal">
+        </div>
+        <div class="category">
+            <img src="/api/placeholder/100/150" alt="Category 2 Vertical" class="vertical">
+            <img src="/api/placeholder/250/150" alt="Category 2 Horizontal" class="horizontal">
+        </div>
+        <div class="category">
+            <img src="/api/placeholder/100/150" alt="Category 3 Vertical" class="vertical">
+            <img src="/api/placeholder/250/150" alt="Category 3 Horizontal" class="horizontal">
+        </div>
+        <div class="category">
+            <img src="/api/placeholder/100/150" alt="Category 4 Vertical" class="vertical">
+            <img src="/api/placeholder/250/150" alt="Category 4 Horizontal" class="horizontal">
+        </div>
+        <div class="category">
+            <img src="/api/placeholder/100/150" alt="Category 5 Vertical" class="vertical">
+            <img src="/api/placeholder/250/150" alt="Category 5 Horizontal" class="horizontal">
+        </div>
+        <div class="category">
+            <img src="/api/placeholder/100/150" alt="Category 6 Vertical" class="vertical">
+            <img src="/api/placeholder/250/150" alt="Category 6 Horizontal" class="horizontal">
+        </div>
+        <div class="category">
+            <img src="/api/placeholder/100/150" alt="Category 7 Vertical" class="vertical">
+            <img src="/api/placeholder/250/150" alt="Category 7 Horizontal" class="horizontal">
+        </div>
+    </div>
+</body>
+</html>
