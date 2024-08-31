@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Updated Category Showcase with Rearranged Images</title>
+    <title>Infinite Scroll Category Showcase with Improved Expansion</title>
     <style>
         body, html {
             margin: 0;
@@ -22,7 +22,7 @@
         .category-container {
             display: flex;
             gap: 20px;
-            padding: 20px;
+            padding: 20px 60px;
             height: 100%;
             box-sizing: border-box;
             background-image: url('https://imgtr.ee/images/2024/08/31/7b7dbdc0d48ca94418696abc3de5a741.png');
@@ -66,21 +66,24 @@
         }
         .category:hover .vertical { opacity: 0; }
         .category:hover .horizontal { opacity: 1; }
-        .category:nth-child(1) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/37e9f9000027cd802f040993621e359f.png'); }
-        .category:nth-child(1) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/e55e11db3404d8446e857431611f85ed.png'); }
-        .category:nth-child(2) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/c636fc52565f947bba6aedfd31ee07fd.png'); }
-        .category:nth-child(2) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/8b5c3838a4e4945411c3c4169172a768.png'); }
-        .category:nth-child(3) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/c6ade43fd7298fdd07dd759d279cd42e.png'); }
-        .category:nth-child(3) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/fb902b0eec0d03d4f0f8859e5b99cee0.png'); }
-        .category:nth-child(4) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/f708082a78ddee7a11f6a4472e9c0efe.png'); }
-        .category:nth-child(4) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/8e00c9cdd27022473eb9d4ec766db716.png'); }
-        .category:nth-child(5) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/df73182c5be70575c7fb4cf2b94224f9.png'); }
-        .category:nth-child(5) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/3a373c6af2fc138f72825a87394eb8c2.png'); }
-        .category:nth-child(6) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/e3b90973b9f2558b8f57ead67ad45a6e.png'); }
-        .category:nth-child(6) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/4c67aba875380ed8f836db47bf0a74bb.png'); }
+        .category:nth-child(7n+1) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/37e9f9000027cd802f040993621e359f.png'); }
+        .category:nth-child(7n+1) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/e55e11db3404d8446e857431611f85ed.png'); }
+        .category:nth-child(7n+2) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/c636fc52565f947bba6aedfd31ee07fd.png'); }
+        .category:nth-child(7n+2) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/8b5c3838a4e4945411c3c4169172a768.png'); }
+        .category:nth-child(7n+3) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/c6ade43fd7298fdd07dd759d279cd42e.png'); }
+        .category:nth-child(7n+3) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/fb902b0eec0d03d4f0f8859e5b99cee0.png'); }
+        .category:nth-child(7n+4) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/f708082a78ddee7a11f6a4472e9c0efe.png'); }
+        .category:nth-child(7n+4) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/8e00c9cdd27022473eb9d4ec766db716.png'); }
+        .category:nth-child(7n+5) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/df73182c5be70575c7fb4cf2b94224f9.png'); }
+        .category:nth-child(7n+5) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/3a373c6af2fc138f72825a87394eb8c2.png'); }
+        .category:nth-child(7n+6) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/4c67aba875380ed8f836db47bf0a74bb.png'); }
+        .category:nth-child(7n+6) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/e3b90973b9f2558b8f57ead67ad45a6e.png'); }
+        .category:nth-child(7n) .vertical { background-image: url('https://imgtr.ee/images/2024/08/31/24d15c4a5bf20ef481b9d39a9aeca316.png'); }
+        .category:nth-child(7n) .horizontal { background-image: url('https://imgtr.ee/images/2024/08/31/0ddde87fe0d545915de6edb66c1cbd5c.png'); }
         .nav-arrow {
             position: absolute;
-            bottom: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             width: 40px;
             height: 40px;
             background-color: rgba(255, 255, 255, 0.2);
@@ -89,15 +92,16 @@
             align-items: center;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            z-index: 10;
         }
         .nav-arrow:hover {
             background-color: rgba(255, 255, 255, 0.4);
         }
         .nav-left {
-            right: 70px;
+            left: 10px;
         }
         .nav-right {
-            right: 20px;
+            right: 10px;
         }
         .arrow {
             width: 0;
@@ -116,30 +120,7 @@
 <body>
     <div class="showcase-wrapper">
         <div class="category-container">
-            <div class="category">
-                <div class="vertical"></div>
-                <div class="horizontal"></div>
-            </div>
-            <div class="category">
-                <div class="vertical"></div>
-                <div class="horizontal"></div>
-            </div>
-            <div class="category">
-                <div class="vertical"></div>
-                <div class="horizontal"></div>
-            </div>
-            <div class="category">
-                <div class="vertical"></div>
-                <div class="horizontal"></div>
-            </div>
-            <div class="category">
-                <div class="vertical"></div>
-                <div class="horizontal"></div>
-            </div>
-            <div class="category">
-                <div class="vertical"></div>
-                <div class="horizontal"></div>
-            </div>
+            <!-- Categories will be dynamically added here -->
         </div>
         <div class="nav-arrow nav-left"><div class="arrow"></div></div>
         <div class="nav-arrow nav-right"><div class="arrow"></div></div>
@@ -150,6 +131,42 @@
         const leftArrow = document.querySelector('.nav-left');
         const rightArrow = document.querySelector('.nav-right');
         const categoryWidth = 320; // 300px width + 20px gap
+        const categories = [
+            { link: "https://neyex.co/oversize-unisex-tshirt" },
+            { link: "https://neyex.co/cocuk" },
+            { link: "https://neyex.co/bornoz" },
+            { link: "https://neyex.co/nevresim" },
+            { link: "https://neyex.co/baskili-sapli-kupa" },
+            { link: "https://neyex.co/havlu" },
+            { link: "https://neyex.co/paspas" }
+        ];
+
+        function createCategory(link) {
+            const category = document.createElement('a');
+            category.href = link;
+            category.target = "_top";
+            category.className = "category";
+            category.innerHTML = '<div class="vertical"></div><div class="horizontal"></div>';
+            return category;
+        }
+
+        function populateCategories() {
+            // Add initial set of categories
+            categories.forEach(cat => container.appendChild(createCategory(cat.link)));
+            // Add another set to ensure smooth scrolling
+            categories.forEach(cat => container.appendChild(createCategory(cat.link)));
+        }
+
+        populateCategories();
+
+        function checkScroll() {
+            if (container.scrollLeft + container.clientWidth >= container.scrollWidth - categoryWidth) {
+                // When near the end, add more categories
+                categories.forEach(cat => container.appendChild(createCategory(cat.link)));
+            }
+        }
+
+        container.addEventListener('scroll', checkScroll);
 
         leftArrow.addEventListener('click', () => {
             container.scrollLeft -= categoryWidth;
@@ -157,6 +174,17 @@
 
         rightArrow.addEventListener('click', () => {
             container.scrollLeft += categoryWidth;
+        });
+
+        container.addEventListener('mouseover', (e) => {
+            if (e.target.closest('.category')) {
+                const category = e.target.closest('.category');
+                const rect = category.getBoundingClientRect();
+                const containerRect = container.getBoundingClientRect();
+                if (rect.right > containerRect.right) {
+                    container.scrollLeft += rect.right - containerRect.right + 20; // 20px extra for padding
+                }
+            }
         });
     </script>
 </body>
