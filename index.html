@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category Showcase with Styled Navigation Arrows</title>
+    <title>Category Showcase with Custom Images</title>
     <style>
         body, html {
             margin: 0;
@@ -63,6 +63,8 @@
             font-size: 32px;
             font-weight: bold;
             transition: opacity 0.3s ease;
+            background-size: cover;
+            background-position: center;
         }
         .horizontal {
             opacity: 0;
@@ -70,8 +72,12 @@
         }
         .category:hover .vertical { opacity: 0; }
         .category:hover .horizontal { opacity: 1; }
-        .category:nth-child(1) .vertical { background-color: rgba(255, 107, 107, 0.8); }
-        .category:nth-child(1) .horizontal { background-color: rgba(255, 135, 135, 0.8); }
+        .category:nth-child(1) .vertical { 
+            background-image: url('https://imgtr.ee/images/2024/08/31/37e9f9000027cd802f040993621e359f.png');
+        }
+        .category:nth-child(1) .horizontal { 
+            background-image: url('https://imgtr.ee/images/2024/08/31/e55e11db3404d8446e857431611f85ed.png');
+        }
         .category:nth-child(2) .vertical { background-color: rgba(78, 205, 196, 0.8); }
         .category:nth-child(2) .horizontal { background-color: rgba(110, 231, 222, 0.8); }
         .category:nth-child(3) .vertical { background-color: rgba(69, 183, 209, 0.8); }
@@ -123,8 +129,8 @@
     <div class="showcase-wrapper">
         <div class="category-container">
             <div class="category">
-                <div class="vertical">Category 1</div>
-                <div class="horizontal">Category 1 (Expanded)</div>
+                <div class="vertical"></div>
+                <div class="horizontal"></div>
             </div>
             <div class="category">
                 <div class="vertical">Category 2</div>
