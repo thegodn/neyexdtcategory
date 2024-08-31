@@ -3,33 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colored Horizontal Category Showcase</title>
+    <title>Enlarged Horizontal Category Showcase</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
             background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
         .category-container {
             display: flex;
-            flex-direction: row;
-            gap: 10px;
-            height: 150px;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .category {
-            width: 100px;
-            height: 150px;
+            width: 180px;
+            height: 240px;
+            border-radius: 15px;
             overflow: hidden;
             position: relative;
             transition: all 0.3s ease;
-            border-radius: 10px;
+            cursor: pointer;
         }
         .category:hover {
-            width: 250px;
+            width: 450px;
         }
         .vertical, .horizontal {
             width: 100%;
@@ -41,19 +47,16 @@
             justify-content: center;
             align-items: center;
             color: white;
+            font-size: 24px;
             font-weight: bold;
             transition: opacity 0.3s ease;
         }
         .horizontal {
             opacity: 0;
-            width: 250px;
+            width: 450px;
         }
-        .category:hover .vertical {
-            opacity: 0;
-        }
-        .category:hover .horizontal {
-            opacity: 1;
-        }
+        .category:hover .vertical { opacity: 0; }
+        .category:hover .horizontal { opacity: 1; }
         .category:nth-child(1) .vertical { background-color: #FF6B6B; }
         .category:nth-child(1) .horizontal { background-color: #FF8787; }
         .category:nth-child(2) .vertical { background-color: #4ECDC4; }
